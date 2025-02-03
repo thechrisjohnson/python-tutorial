@@ -1,3 +1,5 @@
+from enum import Enum
+
 class Point:
     __match_args__ = ('x', 'y')
     def __init__(self, x, y):
@@ -38,6 +40,20 @@ def on_diagonal(point):
         case Point(x, y):
             print(f"Not on the diagonal")
 
+class Color(Enum):
+    RED = 'red'
+    GREEN = 'green'
+    BLUE = 'blue'
+
+def match_color(color):
+    match color:
+        case Color.RED:
+            print("I see red!")
+        case Color.GREEN:
+            print("Grass is green")
+        case Color.BLUE:
+            print("I'm feeling the blues :(")
+
 one = Point(x=0, y=0)
 two = Point(x=0, y=1)
 three = Point(x=1, y=0)
@@ -57,3 +73,6 @@ on_diagonal(one)
 on_diagonal(two)
 on_diagonal(three)
 on_diagonal(four)
+
+color = Color(input("Enter your choice of 'red', blue' or 'green': "))
+match_color(color)
